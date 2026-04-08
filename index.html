@@ -74,31 +74,114 @@
 
     /* HERO */
     .hero {
-      height: 100vh;
-      background: linear-gradient(135deg, #0d2240 0%, #1a3a5c 40%, #2c5f8a 100%);
+      min-height: 100vh;
+      background: linear-gradient(145deg, #050f1e 0%, #0d2240 30%, #1a3a5c 60%, #1e5f8a 100%);
       display: flex; align-items: center; justify-content: center;
       position: relative; overflow: hidden;
     }
     .hero::before {
       content: '';
       position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background:
+        radial-gradient(ellipse at 15% 50%, rgba(200,164,90,0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 20%, rgba(44,95,138,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 90%, rgba(200,164,90,0.05) 0%, transparent 40%);
     }
     .hero-particles {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(200,164,90,0.5);
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0); opacity: 0; }
+      15% { opacity: 1; transform: scale(1); }
+      85% { opacity: 0.6; }
+      100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+    }
+
+    /* Hero grid overlay */
+    .hero::after {
+      content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(200,164,90,0.08) 0%, transparent 60%);
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
     }
     .hero-content {
       text-align: center; position: relative; z-index: 1;
-      padding: 0 20px 160px;
+      padding: 120px 20px 80px;
+      max-width: 900px;
     }
     .hero-badge {
       display: inline-block;
-      background: rgba(200,164,90,0.15);
-      border: 1px solid rgba(200,164,90,0.4);
+      background: rgba(200,164,90,0.12);
+      border: 1px solid rgba(200,164,90,0.3);
       color: var(--accent-light);
-      font-size: 13px; padding: 6px 20px; border-radius: 30px;
-      margin-bottom: 28px; letter-spacing: 2px; font-weight: 500;
+      font-size: 12px; padding: 7px 22px; border-radius: 30px;
+      margin-bottom: 28px; letter-spacing: 3px; font-weight: 600;
+      text-transform: uppercase;
+      animation: fadeSlideDown 0.8s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      color: rgba(255,255,255,0.6);
+      max-width: 580px; margin: 0 auto 40px;
+      font-weight: 300;
+      animation: fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-en {
+      font-size: 13px; color: rgba(255,255,255,0.35);
+      letter-spacing: 4px; text-transform: uppercase;
+      margin-bottom: 50px;
+      animation: fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+    }
+    .hero-btns {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      animation: fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.4s both;
+    }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 0;
+      margin-top: 48px;
+      animation: fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.5s both;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute; bottom: 28px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: rgba(255,255,255,0.25); font-size: 10px;
+      letter-spacing: 3px; text-transform: uppercase;
+      animation: fadeSlideUp 1s 0.8s both;
+      z-index: 2;
+    }
+    .scroll-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      animation: scrollBounce 1.6s ease-in-out infinite;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); opacity: 0.4; }
+      50% { transform: translateY(8px); opacity: 1; }
+    }
+
+    @keyframes expandWidth {
+      from { width: 0; opacity: 0; }
+      to { width: 60px; opacity: 1; }
     }
     .hero h1 {
       font-size: clamp(38px, 6vw, 72px);
@@ -108,7 +191,14 @@
       margin-bottom: 20px;
       letter-spacing: -1px;
     }
-    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero h1 em {
+      color: var(--accent);
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     .hero-sub {
       font-size: clamp(16px, 2vw, 20px);
       color: rgba(255,255,255,0.65);
@@ -283,10 +373,23 @@
     }
     .project-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
     .project-img {
-      height: 180px; background: linear-gradient(135deg, var(--primary), #3a7fbf);
-      display: flex; align-items: center; justify-content: center;
+      height: 180px; overflow: hidden;
       position: relative;
     }
+    .project-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+    .project-card:hover .project-img img { transform: scale(1.08); }
+    .project-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(26,58,92,0.35);
+      transition: opacity 0.3s;
+    }
+    .project-card:hover .project-img::after { opacity: 0; }
     .project-year {
       position: absolute; top: 16px; left: 16px;
       background: var(--accent); color: var(--white);
@@ -454,8 +557,16 @@
   <div class="hero-particles"></div>
   <div class="hero-content">
     <div class="hero-badge">EST. 2013 · 天津 · 建筑装饰工程</div>
-    <h1>天津铧呈<br><em>建设集团有限公司</em></h1>
+    <h1>
+      <span style="display:block;font-size:clamp(32px,5vw,62px);font-weight:900;color:#fff;line-height:1.15;letter-spacing:-1px;margin-bottom:4px;">
+        天津铧呈建设集团有限公司
+      </span>
+      <em style="display:block;font-size:clamp(22px,3.5vw,42px);font-weight:300;color:rgba(255,255,255,0.55);letter-spacing:0;">
+        建筑装饰 · 幕墙工程 · 消防设施
+      </em>
+    </h1>
     <p class="hero-sub">专业从事建筑装饰、幕墙工程、消防施工、智能化建设的综合性建筑企业，匠心筑造精品工程，服务网络覆盖全国</p>
+    <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:2px;margin:0 auto 20px;animation:expandWidth 1s 0.3s both;"></div>
     <p class="hero-en">Tianjin Huacheng Construction Group Co., Ltd.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">查看精品案例</a>
@@ -466,15 +577,17 @@
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num">2013</div>
+        <div class="hero-stat-num" data-count="2013">0</div>
         <div class="hero-stat-label">成立年份</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">100+</div>
+        <div class="hero-stat-num" data-count="100">0<span style="font-size:20px">+</span></div>
         <div class="hero-stat-label">精品项目</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">9项</div>
+        <div class="hero-stat-num" data-count="9">0</div>
+        <div class="hero-stat-label">专业资质</div>
+      </div>
         <div class="hero-stat-label">专业资质</div>
       </div>
       <a href="tel:400-108-7757" class="hero-stat" style="text-decoration:none;">
@@ -484,6 +597,10 @@
         </div>
         <div class="hero-stat-label">点击拨打热线</div>
       </a>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-dot"></div>
     </div>
   </div>
 </section>
@@ -694,8 +811,8 @@
     <div class="projects-grid" style="margin-top: 40px;">
       <div class="project-card fade-up">
         <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" alt="大型装修工程" loading="lazy">
           <div class="project-year">2025</div>
-          <span style="color: rgba(255,255,255,0.8); font-size: 20px; font-weight: 700;">✦</span>
         </div>
         <div class="project-body">
           <h3>大型装修工程</h3>
@@ -704,9 +821,9 @@
         </div>
       </div>
       <div class="project-card fade-up">
-        <div class="project-img" style="background: linear-gradient(135deg, #1a5a3a, #2a8a5a);">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="精品装饰工程" loading="lazy">
           <div class="project-year">2025</div>
-          <span style="color: rgba(255,255,255,0.8); font-size: 20px; font-weight: 700;">✦</span>
         </div>
         <div class="project-body">
           <h3>精品装饰工程</h3>
@@ -715,14 +832,47 @@
         </div>
       </div>
       <div class="project-card fade-up">
-        <div class="project-img" style="background: linear-gradient(135deg, #5a3a1a, #8a5a2a);">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80" alt="超大型综合项目" loading="lazy">
           <div class="project-year">2023-2024</div>
-          <span style="color: rgba(255,255,255,0.8); font-size: 20px; font-weight: 700;">✦</span>
         </div>
         <div class="project-body">
           <h3>超大型综合项目</h3>
           <p>建筑面积约 17万㎡，跨年度精品工程</p>
           <span class="project-tag">综合工程 · 2023-2024</span>
+        </div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="幕墙工程项目" loading="lazy">
+          <div class="project-year">2024</div>
+        </div>
+        <div class="project-body">
+          <h3>幕墙工程项目</h3>
+          <p>施工面积约 10,000㎡，技术领先，工艺精湛</p>
+          <span class="project-tag">幕墙工程 · 2024</span>
+        </div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80" alt="大型综合装修" loading="lazy">
+          <div class="project-year">2021</div>
+        </div>
+        <div class="project-body">
+          <h3>大型综合装修</h3>
+          <p>装修面积约 60,000㎡，年度标志性项目</p>
+          <span class="project-tag">综合工程 · 2021</span>
+        </div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1464146072230-91cabc968266?w=600&q=80" alt="超大型综合项目" loading="lazy">
+          <div class="project-year">2021-2024</div>
+        </div>
+        <div class="project-body">
+          <h3>超大型综合建筑</h3>
+          <p>建筑面积约 14万㎡，跨年度大型综合建筑装饰工程</p>
+          <span class="project-tag">综合工程 · 2021-2024</span>
         </div>
       </div>
     </div>
@@ -815,24 +965,77 @@
 </footer>
 
 <script>
-  // Navbar scroll
+  // ── Navbar scroll ──
   window.addEventListener('scroll', () => {
     const nav = document.getElementById('navbar');
     nav.classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // Scroll animations
+  // ── Scroll animations ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // once only
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Form submit
+  // ── Particles ──
+  (function() {
+    const container = document.getElementById('particles');
+    if (!container) return;
+    const colors = ['rgba(200,164,90,0.6)', 'rgba(200,164,90,0.3)', 'rgba(255,255,255,0.4)'];
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 4 + 2;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      p.style.animationDuration = (Math.random() * 8 + 6) + 's';
+      p.style.animationDelay = (Math.random() * 8) + 's';
+      container.appendChild(p);
+    }
+  })();
+
+  // ── Count-up animation ──
+  function animateCount(el, target, duration) {
+    let start = 0;
+    const step = target / (duration / 16);
+    function tick() {
+      start += step;
+      if (start >= target) {
+        el.textContent = target;
+        return;
+      }
+      el.textContent = Math.floor(start);
+      requestAnimationFrame(tick);
+    }
+    tick();
+  }
+
+  // Trigger count-up when stats come into view
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const nums = entry.target.querySelectorAll('[data-count]');
+        nums.forEach(n => {
+          const target = parseInt(n.dataset.count);
+          animateCount(n, target, 1500);
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const statsBar = document.querySelector('.hero-stats');
+  if (statsBar) statsObserver.observe(statsBar);
+
+  // ── Form submit ──
   function handleSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('.btn-submit');
