@@ -90,7 +90,7 @@
     }
     .hero-content {
       text-align: center; position: relative; z-index: 1;
-      padding: 0 20px;
+      padding: 0 20px 160px;
     }
     .hero-badge {
       display: inline-block;
@@ -140,16 +140,24 @@
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(200,164,90,0.08); }
 
     .hero-stats {
-      position: absolute; bottom: 50px; left: 0; right: 0;
       display: flex; justify-content: center; gap: 0;
+      margin-top: 40px;
     }
     .hero-stat {
-      text-align: center; padding: 0 50px;
+      text-align: center; padding: 20px 40px;
       border-right: 1px solid rgba(255,255,255,0.1);
+      text-decoration: none; display: block;
+      transition: background 0.2s;
     }
     .hero-stat:last-child { border-right: none; }
-    .hero-stat-num { font-size: 36px; font-weight: 900; color: var(--accent); }
+    .hero-stat:hover { background: rgba(255,255,255,0.05); border-radius: 0; }
+    .hero-stat-num { font-size: 32px; font-weight: 900; color: var(--accent); display: block; }
     .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 2px; }
+    .hero-stat-phone {
+      font-size: 28px; font-weight: 900; color: var(--accent);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .hero-stat-phone svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; stroke-width: 2; flex-shrink: 0; }
 
     /* SECTION COMMON */
     .section {
@@ -435,10 +443,10 @@
     <li><a href="#projects">精品案例</a></li>
     <li><a href="#contact">联系我们</a></li>
   </ul>
-  <div class="nav-phone">
+  <a href="tel:400-108-7757" class="nav-phone" style="text-decoration:none;">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
     400-108-7757
-  </div>
+  </a>
 </nav>
 
 <!-- HERO -->
@@ -451,25 +459,31 @@
     <p class="hero-en">Tianjin Huacheng Construction Group Co., Ltd.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">查看精品案例</a>
-      <a href="#contact" class="btn-outline">联系我们</a>
+      <a href="tel:400-108-7757" class="btn-outline">
+        <svg viewBox="0 0 24 24" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;stroke:currentColor;fill:none;stroke-width:2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        400-108-7757
+      </a>
     </div>
-  </div>
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-num">2013</div>
-      <div class="hero-stat-label">成立年份</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">100+</div>
-      <div class="hero-stat-label">精品项目</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">9项</div>
-      <div class="hero-stat-label">专业资质</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">AAA</div>
-      <div class="hero-stat-label">信用等级</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">2013</div>
+        <div class="hero-stat-label">成立年份</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">100+</div>
+        <div class="hero-stat-label">精品项目</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">9项</div>
+        <div class="hero-stat-label">专业资质</div>
+      </div>
+      <a href="tel:400-108-7757" class="hero-stat" style="text-decoration:none;">
+        <div class="hero-stat-phone">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          一键拨号
+        </div>
+        <div class="hero-stat-label">点击拨打热线</div>
+      </a>
     </div>
   </div>
 </section>
@@ -754,30 +768,32 @@
         </div>
       </div>
 
-      <div class="contact-form-wrap fade-up">
-        <h3>在线咨询</h3>
-        <form onsubmit="handleSubmit(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label>您的姓名</label>
-              <input type="text" placeholder="请输入姓名" required>
-            </div>
-            <div class="form-group">
-              <label>联系电话</label>
-              <input type="tel" placeholder="请输入电话" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>工程类型</label>
-            <input type="text" placeholder="如：室内装修、幕墙工程、消防设施等">
-          </div>
-          <div class="form-group">
-            <label>项目描述</label>
-            <textarea placeholder="请简单描述您的项目需求..."></textarea>
-          </div>
-          <button type="submit" class="btn-submit">提交咨询</button>
-        </form>
-        <p style="font-size: 12px; color: rgba(255,255,255,0.25); margin-top: 14px; text-align: center;">提交后我们将尽快与您联系</p>
+      <div class="contact-form-wrap fade-up" style="text-align:center; padding: 60px 40px;">
+        <div style="margin-bottom: 16px;">
+          <svg viewBox="0 0 24 24" style="width:48px;height:48px;stroke:var(--accent);fill:none;stroke-width:1.5;opacity:0.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 10px; color: var(--white);">全国服务热线</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 30px;">工作时间：周一至周五 9:00 - 18:00</p>
+        <a href="tel:400-108-7757" style="
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          background: var(--accent);
+          color: var(--white);
+          font-size: 28px;
+          font-weight: 900;
+          padding: 20px 50px;
+          border-radius: 60px;
+          text-decoration: none;
+          box-shadow: 0 8px 30px rgba(200,164,90,0.5);
+          transition: all 0.3s;
+          letter-spacing: 2px;
+          font-family: inherit;
+        " onmouseover="this.style.background='var(--accent-light)';this.style.transform='translateY(-3px)'" onmouseout="this.style.background='';this.style.transform=''">
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          400-108-7757
+        </a>
+        <p style="font-size: 13px; color: rgba(255,255,255,0.3); margin-top: 20px;">点击即可直接拨打<br>或拨打座机 (022) 5969-0109</p>
       </div>
     </div>
   </div>
