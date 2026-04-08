@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>天津铧呈建设集团有限公司</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #1a3a5c;
+      --primary-light: #2c5f8a;
+      --accent: #c8a45a;
+      --accent-light: #e0c078;
+      --bg-light: #f4f6f9;
+      --text-dark: #1a1a2e;
+      --text-gray: #5a6474;
+      --white: #ffffff;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans SC', -apple-system, sans-serif;
+      color: var(--text-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(26,58,92,0.97);
+      backdrop-filter: blur(12px);
+      padding: 0 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+      transition: all 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.25); }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 14px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 44px; height: 44px;
+      background: var(--accent);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 18px; color: var(--white);
+      letter-spacing: -1px;
+    }
+    .nav-logo-text { color: var(--white); }
+    .nav-logo-text span { display: block; font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 400; }
+
+    .nav-links { display: flex; gap: 8px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none; font-size: 14px;
+      padding: 8px 16px; border-radius: 8px;
+      transition: all 0.2s; font-weight: 500;
+    }
+    .nav-links a:hover { background: rgba(255,255,255,0.12); color: var(--white); }
+
+    .nav-phone {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--accent); font-weight: 700; font-size: 15px;
+    }
+    .nav-phone svg { width: 18px; height: 18px; }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, #0d2240 0%, #1a3a5c 40%, #2c5f8a 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-particles {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(200,164,90,0.08) 0%, transparent 60%);
+    }
+    .hero-content {
+      text-align: center; position: relative; z-index: 1;
+      padding: 0 20px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(200,164,90,0.15);
+      border: 1px solid rgba(200,164,90,0.4);
+      color: var(--accent-light);
+      font-size: 13px; padding: 6px 20px; border-radius: 30px;
+      margin-bottom: 28px; letter-spacing: 2px; font-weight: 500;
+    }
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      color: rgba(255,255,255,0.65);
+      max-width: 580px; margin: 0 auto 40px;
+      font-weight: 300;
+    }
+    .hero-en {
+      font-size: 14px; color: rgba(255,255,255,0.35);
+      letter-spacing: 4px; text-transform: uppercase;
+      margin-bottom: 50px;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white); font-weight: 700;
+      padding: 14px 36px; border-radius: 50px;
+      text-decoration: none; font-size: 15px;
+      transition: all 0.3s; display: inline-block;
+      box-shadow: 0 4px 20px rgba(200,164,90,0.4);
+    }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,164,90,0.5); }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: var(--white); font-weight: 500;
+      padding: 14px 36px; border-radius: 50px;
+      text-decoration: none; font-size: 15px;
+      transition: all 0.3s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(200,164,90,0.08); }
+
+    .hero-stats {
+      position: absolute; bottom: 50px; left: 0; right: 0;
+      display: flex; justify-content: center; gap: 0;
+    }
+    .hero-stat {
+      text-align: center; padding: 0 50px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num { font-size: 36px; font-weight: 900; color: var(--accent); }
+    .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 2px; }
+
+    /* SECTION COMMON */
+    .section {
+      padding: 100px 60px;
+    }
+    .section-tag {
+      display: inline-block;
+      background: rgba(200,164,90,0.1);
+      color: var(--accent); font-size: 12px; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      padding: 5px 16px; border-radius: 30px; margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900; color: var(--primary);
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .section-sub {
+      font-size: 16px; color: var(--text-gray);
+      max-width: 560px; margin-bottom: 60px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ABOUT */
+    .about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center;
+    }
+    .about-text p {
+      font-size: 15px; color: var(--text-gray);
+      margin-bottom: 18px; line-height: 1.9;
+    }
+    .about-text p:first-of-type { font-size: 16px; color: var(--text-dark); }
+    .about-highlights {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;
+    }
+    .highlight-card {
+      background: var(--bg-light);
+      border-radius: 16px; padding: 24px;
+      border-left: 4px solid var(--accent);
+    }
+    .highlight-card .num { font-size: 28px; font-weight: 900; color: var(--primary); }
+    .highlight-card .label { font-size: 12px; color: var(--text-gray); margin-top: 4px; }
+    .about-image {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 24px; padding: 50px 40px;
+      color: var(--white); position: relative; overflow: hidden;
+      min-height: 400px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-image::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='20' cy='20' r='18'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .about-image .logo-big {
+      font-size: 48px; font-weight: 900; margin-bottom: 16px;
+      position: relative; z-index: 1;
+    }
+    .about-image .en {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); margin-bottom: 30px;
+      position: relative; z-index: 1;
+    }
+    .about-image .since {
+      font-size: 14px; color: var(--accent-light);
+      position: relative; z-index: 1;
+    }
+    .about-image .since strong { font-size: 42px; display: block; margin-top: 4px; font-weight: 900; }
+
+    /* SERVICES */
+    .services { background: var(--bg-light); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .service-card {
+      background: var(--white); border-radius: 20px;
+      padding: 36px 30px; transition: all 0.3s;
+      border: 1px solid transparent;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(200,164,90,0.3);
+    }
+    .service-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 14px; margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-icon svg { width: 28px; height: 28px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+    .service-card h3 { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+    .service-card p { font-size: 14px; color: var(--text-gray); line-height: 1.8; }
+
+    /* HONORS */
+    .honors { background: var(--white); }
+    .honors-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    }
+    .honor-card {
+      background: var(--bg-light); border-radius: 16px;
+      padding: 28px 20px; text-align: center;
+      border: 1px solid transparent; transition: all 0.3s;
+    }
+    .honor-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .honor-badge {
+      width: 64px; height: 64px; margin: 0 auto 16px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+    }
+    .honor-card h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+    .honor-card p { font-size: 12px; color: var(--text-gray); }
+
+    /* PROJECTS */
+    .projects { background: var(--bg-light); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .project-card {
+      background: var(--white); border-radius: 20px; overflow: hidden;
+      transition: all 0.3s; box-shadow: var(--shadow);
+    }
+    .project-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+    .project-img {
+      height: 180px; background: linear-gradient(135deg, var(--primary), #3a7fbf);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .project-year {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--accent); color: var(--white);
+      font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px;
+    }
+    .project-body { padding: 24px; }
+    .project-body h3 { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .project-body p { font-size: 13px; color: var(--text-gray); }
+    .project-tag {
+      display: inline-block; background: rgba(26,58,92,0.06);
+      color: var(--primary-light); font-size: 11px; font-weight: 600;
+      padding: 3px 10px; border-radius: 20px; margin-top: 10px;
+    }
+
+    /* TIMELINE */
+    .timeline { background: var(--white); }
+    .timeline-list {
+      position: relative; padding-left: 40px;
+    }
+    .timeline-list::before {
+      content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--accent), var(--primary));
+    }
+    .timeline-item {
+      position: relative; margin-bottom: 40px;
+    }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -36px; top: 4px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--accent); border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .timeline-year {
+      font-size: 13px; font-weight: 700; color: var(--accent);
+      letter-spacing: 1px; margin-bottom: 4px;
+    }
+    .timeline-item h4 { font-size: 17px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    .timeline-item p { font-size: 14px; color: var(--text-gray); }
+
+    /* CONTACT */
+    .contact { background: linear-gradient(135deg, #0d2240, #1a3a5c); color: var(--white); }
+    .contact .section-tag { background: rgba(200,164,90,0.2); color: var(--accent-light); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-sub { color: rgba(255,255,255,0.5); }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: start;
+    }
+    .contact-info { }
+    .contact-item {
+      display: flex; gap: 16px; margin-bottom: 28px;
+      padding: 20px; background: rgba(255,255,255,0.06);
+      border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);
+    }
+    .contact-item-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: rgba(200,164,90,0.15); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .contact-item-label { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+    .contact-item-value { font-size: 15px; color: var(--white); font-weight: 500; }
+
+    .contact-form-wrap {
+      background: rgba(255,255,255,0.05);
+      border-radius: 24px; padding: 40px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .contact-form-wrap h3 { font-size: 20px; font-weight: 700; margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+    .form-group input, .form-group textarea {
+      width: 100%; background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 12px 16px;
+      color: var(--white); font-size: 14px;
+      font-family: inherit; outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+    .form-group textarea { height: 100px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-submit {
+      width: 100%; background: var(--accent); color: var(--white);
+      font-weight: 700; font-size: 15px;
+      padding: 14px; border-radius: 10px; border: none; cursor: pointer;
+      font-family: inherit; transition: all 0.3s;
+    }
+    .btn-submit:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer {
+      background: #071628;
+      padding: 40px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { color: rgba(255,255,255,0.7); font-size: 14px; }
+    .footer-logo strong { display: block; font-size: 16px; color: var(--white); }
+    .footer-copy { color: rgba(255,255,255,0.3); font-size: 13px; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* SCROLL ANIMATIONS */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .section { padding: 60px 24px; }
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .honors-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 30px 24px; flex-direction: column; text-align: center; }
+      .hero-stats { display: none; }
+      .about-highlights { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .honors-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon">铧</div>
+    <div class="nav-logo-text">
+      <strong>铧呈建设</strong>
+      <span>Tianjin Huacheng</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">企业介绍</a></li>
+    <li><a href="#services">业务范围</a></li>
+    <li><a href="#honors">资质荣誉</a></li>
+    <li><a href="#projects">精品案例</a></li>
+    <li><a href="#contact">联系我们</a></li>
+  </ul>
+  <div class="nav-phone">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    400-108-7757
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">EST. 2013 · 天津 · 建筑装饰工程</div>
+    <h1>天津铧呈<br><em>建设集团有限公司</em></h1>
+    <p class="hero-sub">专业从事建筑装饰、幕墙工程、消防施工、智能化建设的综合性建筑企业，匠心筑造精品工程，服务网络覆盖全国</p>
+    <p class="hero-en">Tianjin Huacheng Construction Group Co., Ltd.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">查看精品案例</a>
+      <a href="#contact" class="btn-outline">联系我们</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">2013</div>
+      <div class="hero-stat-label">成立年份</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">100+</div>
+      <div class="hero-stat-label">精品项目</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">9项</div>
+      <div class="hero-stat-label">专业资质</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">AAA</div>
+      <div class="hero-stat-label">信用等级</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <div class="section-tag">Part 01 · 企业介绍</div>
+        <h2 class="section-title">匠心筑造，品质为先</h2>
+        <p>
+          天津铧呈建设集团有限公司成立于2013年5月，位于天津市红桥区，旗下公司有天津华玺建设工程工程有限公司、京伏（天津）新能源科技有限公司等。
+        </p>
+        <p>
+          集团主要经营房屋建筑、室内装修装饰工程施工及设计、幕墙工程施工及设计、防水、保温防腐工程、建筑智能化、消防工程施工、建筑材料销售等。
+        </p>
+        <p>
+          参与实施近百个精典项目，在全国均有诸多精品工程，并多次荣获"天津市建筑工程装饰海河杯奖"、"中国建筑工程装饰奖"。
+        </p>
+        <div class="about-highlights">
+          <div class="highlight-card">
+            <div class="num">AAA</div>
+            <div class="label">企业信用评价等级</div>
+          </div>
+          <div class="highlight-card">
+            <div class="num">海河杯</div>
+            <div class="label">天津市建筑工程装饰奖</div>
+          </div>
+          <div class="highlight-card">
+            <div class="num">国优</div>
+            <div class="label">中国建筑工程装饰奖</div>
+          </div>
+          <div class="highlight-card">
+            <div class="num">ISO</div>
+            <div class="label">三体系认证企业</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-image fade-up">
+        <div class="logo-big">铧呈</div>
+        <div class="en">Tianjin Huacheng Construction Group</div>
+        <div class="since">
+          创立于
+          <strong>2013</strong>
+          年
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="container">
+    <div class="section-tag">Part 02 · 业务范围</div>
+    <h2 class="section-title">全产业链建筑服务</h2>
+    <p class="section-sub">覆盖建筑全生命周期的专业服务能力，九项专业资质为品质护航</p>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>房屋建筑工程</h3>
+        <p>建筑工程施工总承包叁级资质，提供高质量房屋建筑施工服务，覆盖住宅、商业、办公等多种建筑类型。</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v3"/></svg>
+        </div>
+        <h3>室内装修装饰</h3>
+        <p>建筑装修装饰工程专业承包壹级资质，专业团队提供室内装饰设计及施工一体化服务，打造精品空间。</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <h3>幕墙工程</h3>
+        <p>建筑幕墙工程专业承包贰级资质，专业从事各类建筑幕墙设计与施工，技术领先，工艺精湛。</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>消防设施工程</h3>
+        <p>消防设施工程专业承包贰级资质，提供专业消防系统设计、安装及维护，保障建筑安全。</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <h3>建筑智能化</h3>
+        <p>电子与智能化工程专业承包贰级资质，打造智慧建筑，提供智能化系统集成解决方案。</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>防水保温防腐</h3>
+        <p>防水防腐保温工程专业承包贰级资质，专业处理建筑防水、保温、防腐工程，延长建筑使用寿命。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HONORS -->
+<section class="section honors" id="honors">
+  <div class="container">
+    <div class="section-tag">Part 03 · 资质荣誉</div>
+    <h2 class="section-title">专业认证 · 行业认可</h2>
+    <p class="section-sub">完善的质量、环境、职业健康安全三大管理体系，权威认证，信誉保障</p>
+    <div class="honors-grid">
+      <div class="honor-card fade-up">
+        <div class="honor-badge">🏆</div>
+        <h4>AAA级信用企业</h4>
+        <p>中国建筑装饰协会评定<br>企业信用评价最高等级</p>
+      </div>
+      <div class="honor-card fade-up">
+        <div class="honor-badge">🏅</div>
+        <h4>海河杯奖</h4>
+        <p>天津市建筑工程<br>装饰海河杯奖</p>
+      </div>
+      <div class="honor-card fade-up">
+        <div class="honor-badge">⭐</div>
+        <h4>中国装饰奖</h4>
+        <p>中国建筑工程<br>装饰奖</p>
+      </div>
+      <div class="honor-card fade-up">
+        <div class="honor-badge">📜</div>
+        <h4>ISO三体系认证</h4>
+        <p>质量/环境/职业健康<br>安全管理体系认证</p>
+      </div>
+      <div class="honor-card fade-up">
+        <div class="honor-badge">🏗️</div>
+        <h4>壹级装修资质</h4>
+        <p>建筑装修装饰工程<br>专业承包壹级</p>
+      </div>
+      <div class="honor-card fade-up">
+        <div class="honor-badge">🧱</div>
+        <h4>叁级总包资质</h4>
+        <p>建筑工程施工<br>总承包叁级</p>
+      </div>
+      <div class="honor-card fade-up">
+        <div class="honor-badge">🌿</div>
+        <h4>副会长单位</h4>
+        <p>天津市环境装饰协会<br>副会长单位</p>
+      </div>
+      <div class="honor-card fade-up">
+        <div class="honor-badge">🎓</div>
+        <h4>会员单位</h4>
+        <p>中国建筑装饰协会<br>会员单位</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS TIMELINE -->
+<section class="section" id="projects" style="background: var(--white);">
+  <div class="container">
+    <div class="section-tag">Part 04 · 精品案例</div>
+    <h2 class="section-title">代表业绩</h2>
+    <p class="section-sub">从2015年至2025年，十年匠心，覆盖全国多地大型建筑装饰工程</p>
+
+    <div class="timeline-list" style="margin-bottom: 60px;">
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">2015-2018</div>
+        <h4>新建项目装修工程</h4>
+        <p>完成多个年度新建项目装修工程，涵盖办公楼、商业综合体等不同业态，积累了丰富的施工管理经验。</p>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">2018</div>
+        <h4>大型综合装修项目</h4>
+        <p>新建项目装修工程，建筑面积约 40,000 ㎡，打造区域标杆精品工程。</p>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">2019</div>
+        <h4>外幕墙工程</h4>
+        <p>新建项目外幕墙工程，施工面积约 10,000 ㎡，技术难度大，工艺要求高。</p>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">2020</div>
+        <h4>大型装修工程</h4>
+        <p>新建项目装修工程，施工面积约 15,000 ㎡，工程品质获业主高度认可。</p>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">2021</div>
+        <h4>大型装饰工程双项目</h4>
+        <p>新建项目装饰工程，装修面积约 60,000 ㎡ 及 10,000 ㎡，年度标志性项目。</p>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">2021-2024</div>
+        <h4>超大型综合项目</h4>
+        <p>新建项目，建筑面积约 140,000 ㎡，跨年度大型综合建筑装饰工程。</p>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">2023-2024</div>
+        <h4>超大型精品工程</h4>
+        <p>新建项目，建筑面积约 170,000 ㎡，近年来规模最大的代表性项目之一。</p>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">2025</div>
+        <h4>年度新项目（多项目并行）</h4>
+        <p>覆盖装修、装饰、软硬装等多种业态，建筑面积 956 ㎡ 至 120,000 ㎡ 不等，全面推进中。</p>
+      </div>
+    </div>
+
+    <!-- Project Cards Grid -->
+    <div class="projects-grid" style="margin-top: 40px;">
+      <div class="project-card fade-up">
+        <div class="project-img">
+          <div class="project-year">2025</div>
+          <span style="color: rgba(255,255,255,0.8); font-size: 20px; font-weight: 700;">✦</span>
+        </div>
+        <div class="project-body">
+          <h3>大型装修工程</h3>
+          <p>建筑面积约 12万㎡，大型综合建筑装饰工程</p>
+          <span class="project-tag">装修工程 · 2025</span>
+        </div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-img" style="background: linear-gradient(135deg, #1a5a3a, #2a8a5a);">
+          <div class="project-year">2025</div>
+          <span style="color: rgba(255,255,255,0.8); font-size: 20px; font-weight: 700;">✦</span>
+        </div>
+        <div class="project-body">
+          <h3>精品装饰工程</h3>
+          <p>装修面积约 5,600 ㎡，精装修品质标杆</p>
+          <span class="project-tag">装饰工程 · 2025</span>
+        </div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-img" style="background: linear-gradient(135deg, #5a3a1a, #8a5a2a);">
+          <div class="project-year">2023-2024</div>
+          <span style="color: rgba(255,255,255,0.8); font-size: 20px; font-weight: 700;">✦</span>
+        </div>
+        <div class="project-body">
+          <h3>超大型综合项目</h3>
+          <p>建筑面积约 17万㎡，跨年度精品工程</p>
+          <span class="project-tag">综合工程 · 2023-2024</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-tag">Contact Us · 联系我们</div>
+    <h2 class="section-title">期待与您合作</h2>
+    <p class="section-sub">专业团队随时为您提供建筑装饰工程咨询服务</p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item fade-up">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <div class="contact-item-label">公司地址</div>
+            <div class="contact-item-value">天津市武清区开发区福源道北侧<br>创业总部基地 C05座 706室</div>
+          </div>
+        </div>
+        <div class="contact-item fade-up">
+          <div class="contact-item-icon">🌐</div>
+          <div>
+            <div class="contact-item-label">官方网站</div>
+            <div class="contact-item-value">www.tjhcjsjt.com</div>
+          </div>
+        </div>
+        <div class="contact-item fade-up">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <div class="contact-item-label">全国热线</div>
+            <div class="contact-item-value">400-108-7757</div>
+          </div>
+        </div>
+        <div class="contact-item fade-up">
+          <div class="contact-item-icon">📠</div>
+          <div>
+            <div class="contact-item-label">联系电话</div>
+            <div class="contact-item-value">(022) 59690109</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap fade-up">
+        <h3>在线咨询</h3>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>您的姓名</label>
+              <input type="text" placeholder="请输入姓名" required>
+            </div>
+            <div class="form-group">
+              <label>联系电话</label>
+              <input type="tel" placeholder="请输入电话" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>工程类型</label>
+            <input type="text" placeholder="如：室内装修、幕墙工程、消防设施等">
+          </div>
+          <div class="form-group">
+            <label>项目描述</label>
+            <textarea placeholder="请简单描述您的项目需求..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">提交咨询</button>
+        </form>
+        <p style="font-size: 12px; color: rgba(255,255,255,0.25); margin-top: 14px; text-align: center;">提交后我们将尽快与您联系</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <strong>天津铧呈建设集团有限公司</strong>
+    Tianjin Huacheng Construction Group Co., Ltd.
+  </div>
+  <div class="footer-copy">© 2025 铧呈建设集团 版权所有</div>
+  <div class="footer-links">
+    <a href="#about">企业介绍</a>
+    <a href="#services">业务范围</a>
+    <a href="#projects">精品案例</a>
+    <a href="#contact">联系我们</a>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = '提交成功 ✓';
+    btn.style.background = '#2a8a5a';
+    setTimeout(() => {
+      btn.textContent = '提交咨询';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+</script>
+</body>
+</html>
